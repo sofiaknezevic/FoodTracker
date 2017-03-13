@@ -30,6 +30,22 @@ class MealTableViewController: UITableViewController {
             loadSampleMeals()
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        let defaultUsers = UserDefaults.standard
+
+        guard
+            defaultUsers.object(forKey: "user") != nil
+            else
+        {
+            
+            performSegue(withIdentifier: "showSignUpScreen", sender: self)
+            return
+            
+        }
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -132,6 +148,9 @@ class MealTableViewController: UITableViewController {
             
             let selectedMeal = meals[indexPath.row]
             mealDetailViewController.meal = selectedMeal
+            
+        case "showSignUpScreen" :
+            break
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
