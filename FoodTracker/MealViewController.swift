@@ -9,13 +9,16 @@
 import UIKit
 import os.log
 
-class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
     
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var caloriesTextField: UITextField!
+    @IBOutlet weak var foodDescriptionTextField: UITextField!
     
     /*
          This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
@@ -28,6 +31,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         
         nameTextField.delegate = self
+        caloriesTextField.delegate = self
+        foodDescriptionTextField.delegate = self
         
         // Set up views if editing an existing Meal.
         if let meal = meal {
@@ -35,8 +40,9 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             nameTextField.text = meal.name
             photoImageView.image = meal.photo
             ratingControl.rating = meal.rating
+            caloriesTextField.text = String(meal.calories)
+            foodDescriptionTextField.text = meal.foodDescription
         }
-        
         
         updateSaveButtonState()
     }
@@ -117,9 +123,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
+        let caloriesString = caloriesTextField.text ?? "0"
+        let calories = Int(caloriesString) ?? 0
+        let foodDescription = foodDescriptionTextField.text ?? ""
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        meal = Meal(name: name, photo: photo, rating: rating)
+        meal = Meal(name: name, photo: photo, rating: rating, calories: calories, foodDescription: foodDescription)
     }
     
     //MARK: Actions

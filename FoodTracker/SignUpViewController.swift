@@ -10,8 +10,6 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate
 {
-    
-
     //MARK: Properties
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -19,6 +17,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
     
     
     let newCloudTracker = CloudTrackerAPI()
+    let signUpString = "signup"
     
     //MARK: Methods
     override func viewDidLoad() {
@@ -28,7 +27,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         passwordTextField.delegate = self
         warningLabel.isHidden = true
 
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -75,21 +73,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
             
         }
         
-        
-        //MARK: Network request stuff
-        print("Username: \(userName) Password: \(password)")
-        
         self.dismiss(animated: true, completion: nil)
         
-        let postData = ["username": usernameTextField.text ?? "",
-                        "password": passwordTextField.text ?? ""]
-        
-        let signUpString = "signup"
-        
+        let postData = ["username": userName,
+                        "password": password]
 
-        newCloudTracker.getNetworkInformation(stringForJSON: postData, andStringForURL: signUpString)
-        
-        
+        newCloudTracker.postNetworkInformation(stringForJSON: postData, stringForURL: signUpString)
+
         self.dismiss(animated: true, completion: nil)
     }
     

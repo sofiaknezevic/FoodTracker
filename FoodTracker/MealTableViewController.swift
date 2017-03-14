@@ -34,14 +34,18 @@ class MealTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool)
     {
         let defaultUsers = UserDefaults.standard
+        
+        let newDictionary = defaultUsers.object(forKey: "user") as! NSMutableDictionary
 
-        guard
-            defaultUsers.object(forKey: "user") != nil
-            else
-        {
+        let newToken = newDictionary.object(forKey: "token") as? String
+       
+        if (newToken == nil) {
             
             performSegue(withIdentifier: "showSignUpScreen", sender: self)
-            return
+            
+        }else{
+            
+            print(newToken ?? "")
             
         }
 
@@ -78,6 +82,7 @@ class MealTableViewController: UITableViewController {
         cell.nameLabel.text = meal.name
         cell.photoImageView.image = meal.photo
         cell.ratingControl.rating = meal.rating
+        cell.caloriesLabel.text = String(meal.calories)
         
         return cell
     }
@@ -103,23 +108,6 @@ class MealTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     //MARK: - Navigation
 
@@ -189,15 +177,18 @@ class MealTableViewController: UITableViewController {
         let photo2 = UIImage(named: "meal2")
         let photo3 = UIImage(named: "meal3")
 
-        guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
+        guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, calories: 780, foodDescription: "Pretty good, kinda weird, maybe won't have it again") else
+        {
             fatalError("Unable to instantiate meal1")
         }
 
-        guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
+        guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5, calories: 920, foodDescription: "Super simple, but like so fantastic yum yum in my tum tum") else
+        {
             fatalError("Unable to instantiate meal2")
         }
 
-        guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3) else {
+        guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3, calories: 1500, foodDescription: "Lots of fun things in here, like pasta!") else
+        {
             fatalError("Unable to instantiate meal2")
         }
 

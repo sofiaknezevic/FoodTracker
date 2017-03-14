@@ -12,14 +12,15 @@ class CloudTrackerAPI: NSObject {
     
     let apiURL = URL(string: "http://159.203.243.24:8000")!
     
-    func getNetworkInformation(stringForJSON: [String: String], andStringForURL:String) -> Void
+    func postNetworkInformation(stringForJSON: [String: String], stringForURL:String) -> Void
     {
         
         let newUserDefaults = UserDefaults.standard
         
         let postForJSON = try? JSONSerialization.data(withJSONObject: stringForJSON, options: JSONSerialization.WritingOptions.prettyPrinted)
         
-        let request = NSMutableURLRequest(url:apiURL.appendingPathComponent(andStringForURL))
+        let request = NSMutableURLRequest(url:apiURL.appendingPathComponent(stringForURL))
+        
         request.httpBody = postForJSON
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -53,8 +54,6 @@ class CloudTrackerAPI: NSObject {
                 
             }
             
-            
-            
             guard
                 responseToURL.statusCode == 200
                 else
@@ -65,9 +64,9 @@ class CloudTrackerAPI: NSObject {
                 
             }
             
+            
             newUserDefaults.set(json?["user"], forKey: "user")
             newUserDefaults.synchronize()
-
             
         }
         
@@ -75,6 +74,14 @@ class CloudTrackerAPI: NSObject {
         
 
     }
+    
+    func saveMeal(meal: Meal, completion: (NSError?)->(Void)) {
+        //GET - load the table view with all of the user's meals
+        //call this in the table view
+        
+        
+    }
+
     
 
 }
