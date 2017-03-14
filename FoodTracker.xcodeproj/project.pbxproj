@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D2406201E776AD60034C362 /* CloudTrackerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24061F1E776AD60034C362 /* CloudTrackerAPI.swift */; };
 		5D7B0C541E77606300189075 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B0C531E77606300189075 /* LogInViewController.swift */; };
 		5D8162531E770C6100AD3CD1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8162521E770C6100AD3CD1 /* SignUpViewController.swift */; };
 		936B4B821DB54E8F0090E3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936B4B811DB54E8F0090E3EE /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D24061F1E776AD60034C362 /* CloudTrackerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudTrackerAPI.swift; sourceTree = "<group>"; };
 		5D7B0C531E77606300189075 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		5D8162521E770C6100AD3CD1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		936B4B7E1DB54E8F0090E3EE /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				939722381DD4ED9800ACC1D0 /* Meal.swift */,
 				93B36E621DDB8D3A00334F4A /* MealTableViewCell.swift */,
 				93B36E641DDBE63500334F4A /* MealTableViewController.swift */,
+				5D24061F1E776AD60034C362 /* CloudTrackerAPI.swift */,
 				936B4B851DB54E8F0090E3EE /* Main.storyboard */,
 				936B4B881DB54E8F0090E3EE /* Assets.xcassets */,
 				936B4B8A1DB54E8F0090E3EE /* LaunchScreen.storyboard */,
@@ -222,6 +225,7 @@
 				936B4B841DB54E8F0090E3EE /* MealViewController.swift in Sources */,
 				93E91EF11DCA8F83003E4C01 /* RatingControl.swift in Sources */,
 				5D7B0C541E77606300189075 /* LogInViewController.swift in Sources */,
+				5D2406201E776AD60034C362 /* CloudTrackerAPI.swift in Sources */,
 				936B4B821DB54E8F0090E3EE /* AppDelegate.swift in Sources */,
 				93B36E651DDBE63500334F4A /* MealTableViewController.swift in Sources */,
 				93B36E631DDB8D3A00334F4A /* MealTableViewCell.swift in Sources */,
